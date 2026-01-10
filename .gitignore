@@ -1,0 +1,6 @@
+/bin
+/dist
+/.restorable
+/reports
+.env
+*.log
