@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"bufio"
-	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -26,15 +25,21 @@ for basic project information to get you started.`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		fmt.Println("Bootstrapping a new Restorable project...")
 
+		homeDir, err := os.UserHomeDir()
+		if err != nil {
+			return fmt.Errorf("could not get user home directory: %w", err)
+		}
+		baseDir := filepath.Join(homeDir, ".restorable")
+
 		// Create directories
-		if err := os.MkdirAll(".restorable/keys", 0755); err != nil {
-			return fmt.Errorf("failed to create .restorable directory: %w", err)
+		if err := os.MkdirAll(filepath.Join(baseDir, "keys"), 0755); err != nil {
+			return fmt.Errorf("failed to create %s directory: %w", baseDir, err)
 		}
 
 		// Check for existing config
-		configPath := ".restorable/config.yaml"
+		configPath := filepath.Join(baseDir, "config.yaml")
 		if _, err := os.Stat(configPath); err == nil {
-			return errors.New("a .restorable/config.yaml file already exists")
+			return fmt.Errorf("a config file already exists at %s", configPath)
 		}
 
 		reader := bufio.NewReader(os.Stdin)
@@ -99,7 +104,8 @@ for basic project information to get you started.`,
 			return err
 		}
 		if strings.ToLower(useEncryption) == "yes" {
-			keyPath, err := promptWithDefault(reader, "Path to encryption private key", ".restorable/keys/backup.key")
+			defaultKeyPath := filepath.Join(baseDir, "keys", "backup.key")
+			keyPath, err := promptWithDefault(reader, "Path to encryption private key", defaultKeyPath)
 			if err != nil {
 				return err
 			}
@@ -115,8 +121,8 @@ for basic project information to get you started.`,
 			return fmt.Errorf("failed to generate signing key pair: %w", err)
 		}
 
-		privKeyPath := filepath.Join(".restorable", "keys", "signing.key")
-		pubKeyPath := filepath.Join(".restorable", "keys", "signing.pub")
+		privKeyPath := filepath.Join(baseDir, "keys", "signing.key")
+		pubKeyPath := filepath.Join(baseDir, "keys", "signing.pub")
 
 		// Build default config
 		projectID := strings.ToLower(strings.ReplaceAll(projectName, " ", "_"))
@@ -128,7 +134,7 @@ for basic project information to get you started.`,
 			},
 			CLI: config.CLI{
 				MachineID: "db-verify-01",
-				ReportDir: "./reports",
+				ReportDir: filepath.Join(baseDir, "reports"),
 				TempDir:   "/tmp/restorable",
 			},
 			Backup:     backupCfg,
