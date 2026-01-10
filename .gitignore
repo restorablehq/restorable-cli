@@ -4,3 +4,6 @@
 /reports
 .env
 *.log
+.DS_Store
+TECHSPEC.md
+BUSINESS.md
