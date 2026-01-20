@@ -1,5 +1,13 @@
 package config
 
+import (
+	"fmt"
+	"os"
+	"path/filepath"
+
+	"gopkg.in/yaml.v3"
+)
+
 // Config matches the structure of the config.yaml file.
 type Config struct {
 	Version      int           `yaml:"version"`
@@ -90,4 +98,29 @@ type Docker struct {
 
 type Signing struct {
 	PrivateKeyPath string `yaml:"private_key_path"`
+}
+
+// Load finds, reads, and parses the configuration file.
+func Load() (*Config, error) {
+	homeDir, err := os.UserHomeDir()
+	if err != nil {
+		return nil, fmt.Errorf("could not get user home directory: %w", err)
+	}
+	configPath := filepath.Join(homeDir, ".restorable", "config.yaml")
+
+	if _, err := os.Stat(configPath); os.IsNotExist(err) {
+		return nil, fmt.Errorf("config file not found at %s. Please run 'restorable init'", configPath)
+	}
+
+	data, err := os.ReadFile(configPath)
+	if err != nil {
+		return nil, fmt.Errorf("could not read config file at %s: %w", configPath, err)
+	}
+
+	var cfg Config
+	if err := yaml.Unmarshal(data, &cfg); err != nil {
+		return nil, fmt.Errorf("failed to parse config file: %w", err)
+	}
+
+	return &cfg, nil
 }
