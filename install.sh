@@ -3,7 +3,7 @@ set -e
 
 BIN_NAME="restorable"
 INSTALL_DIR="/usr/local/bin"
-GITHUB_REPO="YOUR_ORG/YOUR_REPO"
+GITHUB_REPO="restorablehq/restorable-cli"
 
 OS="$(uname -s | tr '[:upper:]' '[:lower:]')"
 ARCH="$(uname -m)"
