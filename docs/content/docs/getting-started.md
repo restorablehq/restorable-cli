@@ -1,4 +1,10 @@
-# Getting Started
+---
+title: Getting Started
+weight: 2
+type: docs
+prev: /
+next: docs/folder/
+---
 
 This guide walks you through your first backup verification with Restorable CLI.
 

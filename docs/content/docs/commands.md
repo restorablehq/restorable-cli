@@ -1,4 +1,10 @@
-# CLI Commands Reference
+---
+title: Commands
+type: docs
+weight: 6
+prev: docs/installation
+next: docs/configuration
+---
 
 This document describes all available Restorable CLI commands and their options.
 

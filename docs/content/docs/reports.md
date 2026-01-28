@@ -1,4 +1,10 @@
-# Reports
+---
+title: Reports
+type: docs
+weight: 5
+prev: docs/verification-checks
+next: docs/commands
+---
 
 Restorable CLI generates signed verification reports after each run. This document covers report structure, management, and usage for compliance.
 

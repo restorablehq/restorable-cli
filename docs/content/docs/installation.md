@@ -1,4 +1,10 @@
-# Installation
+---
+title: Installation
+type: docs
+weight: 1
+prev: docs/getting-started
+next: docs/commands
+---
 
 This guide covers different ways to install Restorable CLI on your system.
 
@@ -37,22 +43,33 @@ This script:
 
 Pre-built binaries are available for major platforms on the releases page.
 
-```bash
-# Linux (amd64)
-curl -LO https://github.com/your-org/restorable-cli/releases/latest/download/restorable-linux-amd64
-chmod +x restorable-linux-amd64
-sudo mv restorable-linux-amd64 /usr/local/bin/restorable
+{{< tabs items="Linux,macOS,macOS (Silicon)" >}}
 
-# macOS (amd64)
-curl -LO https://github.com/your-org/restorable-cli/releases/latest/download/restorable-darwin-amd64
-chmod +x restorable-darwin-amd64
-sudo mv restorable-darwin-amd64 /usr/local/bin/restorable
+  {{< tab >}}
+  ```bash
+  curl -LO https://github.com/your-org/restorable-cli/releases/latest/download/restorable-linux-amd64
+  chmod +x restorable-linux-amd64
+  sudo mv restorable-linux-amd64 /usr/local/bin/restorable
+  ```
+  {{< /tab >}}
 
-# macOS (Apple Silicon)
-curl -LO https://github.com/your-org/restorable-cli/releases/latest/download/restorable-darwin-arm64
-chmod +x restorable-darwin-arm64
-sudo mv restorable-darwin-arm64 /usr/local/bin/restorable
-```
+  {{< tab >}}
+  ```bash
+  curl -LO https://github.com/your-org/restorable-cli/releases/latest/download/restorable-darwin-amd64
+  chmod +x restorable-darwin-amd64
+  sudo mv restorable-darwin-amd64 /usr/local/bin/restorable
+  ```
+  {{< /tab >}}
+
+  {{< tab >}}
+  ```bash
+  curl -LO https://github.com/your-org/restorable-cli/releases/latest/download/restorable-darwin-arm64
+  chmod +x restorable-darwin-arm64
+  sudo mv restorable-darwin-arm64 /usr/local/bin/restorable
+  ```
+  {{< /tab >}}
+
+{{< /tabs >}}
 
 ### Method 3: Build from Source
 

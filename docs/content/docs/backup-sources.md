@@ -1,4 +1,10 @@
-# Backup Sources
+---
+title: Backup Sources
+type: docs
+weight: 3
+prev: docs/configuration
+next: docs/verification-checks
+---
 
 Restorable CLI supports multiple backup source types to fit different infrastructure setups. This guide covers configuration and best practices for each source type.
 
