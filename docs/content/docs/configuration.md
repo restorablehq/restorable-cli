@@ -1,4 +1,10 @@
-# Configuration Reference
+---
+title: Configuration
+type: docs
+weight: 7
+prev: docs/commands
+next: docs/encryption
+---
 
 Restorable CLI stores its configuration in `~/.restorable/config.yaml`. This document describes all available configuration options.
 

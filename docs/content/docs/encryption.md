@@ -1,4 +1,10 @@
-# Encryption
+---
+title: Encryption
+type: docs
+weight: 9
+prev: docs/reports
+next: docs/help/troubleshooting
+---
 
 Restorable CLI supports decrypting age-encrypted backups. This guide covers setting up encryption for your backup verification workflow.
 

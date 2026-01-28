@@ -1,4 +1,10 @@
-# Verification Checks
+---
+title: Verification
+type: docs
+weight: 4
+prev: docs/backup-sources
+next: docs/reports
+---
 
 Restorable CLI runs a series of verification checks after restoring your backup. This document explains each check, its purpose, and how to interpret results.
 

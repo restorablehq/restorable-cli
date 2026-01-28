@@ -1,4 +1,9 @@
-# Troubleshooting
+---
+title: Troubleshooting
+type: docs
+prev: docs/help/
+next: docs/help/architecture
+---
 
 This guide covers common issues and their solutions when using Restorable CLI.
 
